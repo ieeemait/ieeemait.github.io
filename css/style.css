@@ -333,6 +333,16 @@ ul.social {
     padding-left: 4em;
     width: 60%;
 }
+.load{
+	width: 15%;
+	height: 15%;
+	display: none;
+}
+.load1{
+	width: 12%;
+	display: none;
+	height: 12%;
+}
 .w3ls-text h3,.w3ls-text h2 {
     font-size: 3.2em;
 	text-transform: uppercase;

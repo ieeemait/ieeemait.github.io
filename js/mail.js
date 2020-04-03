@@ -21,7 +21,7 @@ function mailsend() {
     var yyyy = today.getFullYear();
 
     today = mm + '/' + dd + '/' + yyyy;
-    var pr = fetch('query', {
+    var pr = fetch("http://192.168.1.5:4560/" + 'query', {
         method: "POST",
         body: JSON.stringify({ name: name, email: email, subject: subject, msg: msg, date: today })
     })

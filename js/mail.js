@@ -1,6 +1,10 @@
 window.addEventListener('load', event);
 function event() {
     document.getElementById('submit').addEventListener("click", mailsend);
+    document.getElementById('here').addEventListener("click", redirect);
+}
+function redirect() {
+    window.open("https://facebook.com/events/s/wie-quarantine/231430918215663/?ti=as");
 }
 function mailsend() {
     var s = document.getElementById("submit");

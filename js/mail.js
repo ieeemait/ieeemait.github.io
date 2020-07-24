@@ -4,7 +4,7 @@ function event() {
     document.getElementById('here').addEventListener("click", redirect);
 }
 function redirect() {
-    window.open("https://facebook.com/events/s/wie-quarantine/231430918215663/?ti=as");
+    window.open("https://hackthehourglass.ieeemait.com");
 }
 function mailsend() {
     var s = document.getElementById("submit");

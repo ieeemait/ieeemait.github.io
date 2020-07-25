@@ -1,5 +1,39 @@
 window.addEventListener('load', event);
+function updateno() {
+    var pr = fetch("https://ieeemait.herokuapp.com/" + 'new', {
+        method: "GET",
+    })
+    pr.then(response => {
+        response.text().then(data => {
+            data = JSON.parse(data);
+            // console.log(data);
+        }).catch((err) => {
+            console.log(err)
+        })
+    }).catch((err) => {
+        console.log(err)
+    })
+}
+function getno() {
+    var s = document.getElementById("cntvalue");
+    var pr = fetch("https://ieeemait.herokuapp.com/" + 'newget', {
+        method: "GET",
+    })
+    pr.then(response => {
+        response.text().then(data => {
+            data = JSON.parse(data);
+            // console.log();
+            s.innerHTML = data.message.user;
+        }).catch((err) => {
+            console.log(err)
+        })
+    }).catch((err) => {
+        console.log(err)
+    })
+}
 function event() {
+    updateno();
+    getno();
     document.getElementById('submit').addEventListener("click", mailsend);
     document.getElementById('here').addEventListener("click", redirect);
 }

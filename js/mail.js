@@ -1,39 +1,30 @@
 window.addEventListener('load', event);
-function updateno() {
-    var pr = fetch("https://ieeemait.herokuapp.com/" + 'new', {
-        method: "GET",
-    })
-    pr.then(response => {
-        response.text().then(data => {
-            data = JSON.parse(data);
-            // console.log(data);
-        }).catch((err) => {
-            console.log(err)
-        })
-    }).catch((err) => {
-        console.log(err)
+function updateno(obj) {
+    obj.child('usercnt').once('value', snap => {
+        obj.update({ 'usercnt': snap.val() + 1 });
     })
 }
-function getno() {
-    var s = document.getElementById("cntvalue");
-    var pr = fetch("https://ieeemait.herokuapp.com/" + 'newget', {
-        method: "GET",
-    })
-    pr.then(response => {
-        response.text().then(data => {
-            data = JSON.parse(data);
-            // console.log();
-            s.innerHTML = data.message.user;
-        }).catch((err) => {
-            console.log(err)
-        })
-    }).catch((err) => {
-        console.log(err)
+function getno(obj) {
+    obj.child('usercnt').on('value', snap => {
+        var s = document.getElementById("cntvalue");
+        s.innerHTML = snap.val();
     })
 }
 function event() {
-    updateno();
-    getno();
+    const firebaseConfig = {
+        apiKey: "AIzaSyBmDPDSQlj51mThys9ZxzD53WeYh2oFIZI",
+        authDomain: "ieeemait-57e66.firebaseapp.com",
+        databaseURL: "https://ieeemait-57e66.firebaseio.com",
+        projectId: "ieeemait-57e66",
+        storageBucket: "ieeemait-57e66.appspot.com",
+        messagingSenderId: "81543012938",
+        appId: "1:81543012938:web:2602ff1e9e6d122157bcb3",
+        measurementId: "G-CLBSSH5GHZ"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const obj = firebase.database().ref("users");
+    getno(obj);
+    updateno(obj);
     document.getElementById('submit').addEventListener("click", mailsend);
     document.getElementById('here').addEventListener("click", redirect);
 }

@@ -24,7 +24,7 @@ function event() {
     firebase.initializeApp(firebaseConfig);
     const obj = firebase.database().ref("users");
     getno(obj);
-//     updateno(obj);
+    updateno(obj);
     document.getElementById('submit').addEventListener("click", mailsend);
     document.getElementById('here').addEventListener("click", redirect);
 }
